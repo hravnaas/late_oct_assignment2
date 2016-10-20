@@ -1,0 +1,8 @@
+<h2>Q &amp; A</h4>
+<p class="redText" ng-if="errors">{{ errors.message }}</p>
+<p class="redText indented20" ng-if="errors" ng-repeat="(key, error) in errors.errors">{{key}}: {{error.message}}</p>
+<br>
+<form name="loginForm" ng-submit="login()">
+  <p>Name: <input type="text" name="name" ng-model='currentUser.name' required></p>
+  <input type="submit" value="Enter">
+</form>

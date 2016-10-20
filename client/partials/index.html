@@ -1,0 +1,19 @@
+<br>
+<p>Hi {{ user.name }}! <a href ng-click="logout()">log out</a></p>
+<a href="#/qa/question/new">Add a Question</a>
+<p>Search: <input type="text" name="filter" ng-model="filter_text"></p>
+<br>
+<br>
+<table class="table table-striped">
+  <tr>
+    <th>Question</th>
+    <th>Answers</th>
+    <th>Action</th>
+  </tr>
+  <tr ng-repeat="question in questions | filter:filter_text | orderBy:sortType:true">
+    <td>{{ question.text }}</td>
+    <td>{{ question.answers.length }}</td>
+    <td><a href="#/qa/question/{{ question._id }}/show">Show</a></td>
+    <td><a href="#/qa/question/{{ question._id }}/answer">Answer</a></td>
+  </tr>
+</table>

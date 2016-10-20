@@ -1,0 +1,11 @@
+<a ng-href = "#/qa/index">Home</a>
+<a ng-href ng-click= "logout()">Logout</a>
+<h4>New Question</h4>
+<p class="redText" ng-if="errors">{{ errors.message }}</p>
+<p class="redText indented20" ng-if="errors" ng-repeat="(key, error) in errors.errors">{{key}}: {{error.message}}</p>
+<form name="add_question" ng-submit="create()">
+  <p>Question: <input type="text" name="text" ng-model='newQuestion.text' ng-minlength="10" required></p>
+  <p>Description (optional): <input type="text" name="description" ng-model='newQuestion.description'></p>
+  <input type="submit" value="Submit">
+  <button type="button" name="cancel" ng-click="redirect('/qa/index')">Cancel</button>
+</form>

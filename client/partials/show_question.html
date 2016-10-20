@@ -1,0 +1,14 @@
+<a ng-href = "#/qa/index">Home</a>
+<a ng-href = "#/qa/question/{{ question._id }}/answer">Answer this Question</a>
+<a href ng-click="logout()">log out</a>
+
+<h5>{{ question.text }}</h5>
+<p>{{ question.description }}</p>
+
+<div class="answer" ng-repeat="answer in question.answers | orderBy:answer.numLikes:true">
+  <p>{{ answer._user.name }}:</p>
+  <p><b>{{ answer.text }}</b></p>
+  <p>{{ answer.details }}</p>
+  <p>{{ answer.numLikes }} likes</p>
+  <button ng-click="like(answer)" type="button" name="like">Like!</button>
+</div>
