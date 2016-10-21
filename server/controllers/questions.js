@@ -48,33 +48,20 @@ module.exports =
       }
     });
   },
-
-
-  //Message.find()
-  //.populate('comments')
-  // .populate(
-  //   {
-  //     path : "comments",
-  //     populate : { path : "_user" }
-  //   }
-  // )
-  // .populate('_user')
-  // .exec(function(err, messages)
-  // {}
-
   // Get a specific question
   getQuestion : function(req, res)
   {
     // Show the requested question.
     Question.findById(req.params.id)
-      .populate(
-        {
-          path : "answers",
-          populate : { path : "_user" }
-        }
-      )
-      .populate('_user')
-      .exec(function(err, question)
+    .populate(
+          {
+            path : "answers",
+            populate : { path : "_user" }
+          }
+        )
+    .populate('_user')
+    .exec(
+      function(err, question)
       {
         if(err)
         {
@@ -87,8 +74,11 @@ module.exports =
           res.json({ question : question });
         }
       }
+    );
 
 
+
+    // Show the requested question.
     // Question.findById(req.params.id , function(err, question)
     // {
     //   if(err)
@@ -102,6 +92,7 @@ module.exports =
     //     res.json({ question : question });
     //   }
     // }
-  );
+
+  //);
   }
 }

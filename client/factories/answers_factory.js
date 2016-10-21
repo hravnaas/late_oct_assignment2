@@ -19,6 +19,19 @@ app.factory('answersFactory', ['$http', function($http)
           }
       });
     };
+
+    // Add a new like.
+    this.like = function(answer, callback)
+    {
+      $http.get('/qa/answer/' + answer._id)
+        .then(function(returned_data)
+        {
+          if(typeof(callback) == 'function')
+          {
+            callback(returned_data);
+          }
+      });
+    };
   }
 
   return new AnswersFactory();

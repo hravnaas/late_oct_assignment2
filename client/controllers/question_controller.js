@@ -20,6 +20,7 @@ app.controller('questionController',
 
     $scope.create = function()
     {
+      $scope.newQuestion.userID = $scope.user._id;
       questionsFactory.create($scope.newQuestion, function(result)
       {
         if(result.errors)

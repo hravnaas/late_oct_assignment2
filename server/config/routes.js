@@ -55,4 +55,10 @@ module.exports = function(app)
   {
     answers.create(req, res);
   });
+
+  // update the requested answer with one more like.
+  app.get('/qa/answer/:id', function(req, res)
+  {
+    answers.like(req, res);
+  });
 }

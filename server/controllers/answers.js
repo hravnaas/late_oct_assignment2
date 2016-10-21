@@ -58,5 +58,34 @@ module.exports =
         })
       }
   });
+},
+like : function(req, res)
+{
+  // First find the answer the like is for.
+  Answer.findById(req.params.id, function(err, answer)
+  {
+    if(err)
+    {
+      console.log("ERROR: " + err);
+      res.json({ errors : err });
+    }
+    else
+    {
+      // We found the answer the like is for. Update it.
+      answer.numLikes++;
+      answer.save(function(err)
+      {
+          if(err)
+          {
+            console.log("ERROR: " + err);
+            res.json({ errors : err });
+          }
+          else
+          {
+            res.json({ answer : answer });
+          }
+      })
+    }
+  })
 }
 }
